@@ -7,9 +7,13 @@ defmodule Menu.Solver do
   end
 
   def combinations(items, target) do
+    max = max_possible_items(items, target)
+    Helpers.combinations_up_to(max, items)
+  end
+
+  def max_possible_items(items, target) do
     min_price = Item.min_price(items)
-    max_count = trunc(target / min_price)
-    Helpers.combinations_up_to(max_count, items)
+    trunc(target / min_price)
   end
 
   def total_price_matches?(items, target) do
