@@ -1,4 +1,4 @@
-defmodule Helpers do
+defmodule Menu.Helpers do
   def combinations_up_to(n, list) do
     Enum.flat_map(1..n, &(combinations(&1, list)))
   end

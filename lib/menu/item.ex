@@ -1,5 +1,7 @@
-defmodule Item do
+defmodule Menu.Item do
   defstruct name: "", price: 0
+
+  alias Menu.Item
 
   def total_price(items) do
     prices(items) |> Enum.sum
