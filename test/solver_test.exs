@@ -6,7 +6,7 @@ defmodule SolverTest do
   doctest Menu.Solver
 
   def items do
-    [%Item{name: "juice", price: 0.23}, %Item{name: "snacks", price: 0.5}]
+    [%Item{name: "juice", price: 0.23}, %Item{name: "snacks", price: 0.5}, %Item{name: "snacks", price: 0.5}]
   end
 
   test "solve" do
