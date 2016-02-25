@@ -2,8 +2,12 @@ defmodule Menu.Solver do
   alias Menu.Item
   alias Menu.Helpers
 
+  def solve([target | [items]]) do
+    solve(target, items)
+  end
+
   def solve(target, items) do
-    combinations(items, target)
+    combinations(Item.with_price(items), target)
       |> Enum.filter(&(total_price_matches? &1, target))
   end
 

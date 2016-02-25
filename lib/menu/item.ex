@@ -3,8 +3,12 @@ defmodule Menu.Item do
 
   alias Menu.Item
 
+  def with_price(items) do
+    Enum.filter(items, &(&1.price > 0))
+  end
+
   def total_price(items) do
-    prices(items) |> Enum.sum
+    prices(items) |> Enum.sum |> Float.round(2)
   end
 
   def prices(items) do
@@ -20,7 +24,8 @@ defmodule Menu.Item do
   end
 
   def parse(item) do
-    [name, price] = String.split(item, ",")
-    %Item{name: name, price: String.to_float(price)}
+    [name, price_string] = String.split(item, ",")
+    {price, _} = Float.parse(price_string)
+    %Item{name: name, price: price}
   end
 end
