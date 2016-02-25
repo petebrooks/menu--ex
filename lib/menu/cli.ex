@@ -25,12 +25,32 @@ defmodule Menu.CLI do
     end
   end
 
+  @doc """
+  Groups items by number of times the item appears in the combination.
+  Used for formatting.
+
+  ## Examples
+
+      iex> list = [%Menu.Item{name: "french fries"}]
+      iex> Menu.CLI.format(list)
+      ["    1 french fries"]
+  """
   def format(list) do
     Enum.map group(list), fn{k, [v | _]} ->
       "    #{k} #{v.name}"
     end
   end
 
+  @doc """
+  Groups items by number of times the item appears in the combination.
+  Used for formatting.
+
+  ## Examples
+
+      iex> list = ["one", "two", "two", "three", "three", "three"]
+      iex> Menu.CLI.group(list)
+      %{1 => ["one"], 2 => ["two", "two"], 3 => ["three", "three", "three"]}
+  """
   def group(list) do
     Enum.group_by(list, &(count_occurrences(list, &1)))
   end

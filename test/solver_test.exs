@@ -3,9 +3,6 @@ defmodule SolverTest do
   import Menu.Solver, only: [solve: 2, total_price_matches?: 2, max_possible_items: 2]
   alias Menu.Item
 
-  doctest Menu.Solver
-
-
   ####################
   # Simple menu
   ####################
