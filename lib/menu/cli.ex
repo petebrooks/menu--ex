@@ -2,8 +2,10 @@ defmodule Menu.CLI do
   alias Menu.Parser
   alias Menu.Solver
 
-  def run(argv) do
-    argv |> parse_args |> process
+  def main(argv) do
+    argv
+      |> parse_args
+      |> process
   end
 
   def process(:help) do

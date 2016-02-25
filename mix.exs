@@ -2,19 +2,20 @@ defmodule MenuEx.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :menu__ex,
-     version: "0.0.1",
-     elixir: "~> 1.1",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps]
+    [ app: :menu__ex,
+      version: "0.0.1",
+      elixir: "~> 1.1",
+      build_embedded: Mix.env == :prod,
+      start_permanent: Mix.env == :prod,
+      escript: escript_config,
+      deps: deps ]
   end
 
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [ applications: [:logger] ]
   end
 
   # Dependencies can be Hex packages:
@@ -28,5 +29,10 @@ defmodule MenuEx.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     []
+  end
+
+  defp escript_config do
+    [ main_module: Menu.CLI,
+      name: "menu" ]
   end
 end
