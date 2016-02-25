@@ -8,7 +8,9 @@ defmodule Menu.Item do
   end
 
   def total_price(items) do
-    prices(items) |> Enum.sum |> Float.round(2)
+    prices(items)
+      |> Enum.sum
+      |> Float.round(2)
   end
 
   def prices(items) do
@@ -16,7 +18,7 @@ defmodule Menu.Item do
   end
 
   def min_price(items) do
-    prices(items) |> Enum.min
+    Enum.min prices(items)
   end
 
   def parse(items) when is_list(items) do

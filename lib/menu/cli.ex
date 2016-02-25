@@ -5,9 +5,7 @@ defmodule Menu.CLI do
   def main(argv) do
     argv
       |> parse_args
-      |> Parser.parse
-      |> Solver.solve
-      |> print_result
+      |> process
   end
 
   def process(:help) do
@@ -15,8 +13,9 @@ defmodule Menu.CLI do
   end
 
   def process(filepath) do
-    [target | [items]] = Parser.parse(filepath)
-    print_result Solver.solve(target, items)
+    Parser.parse(filepath)
+      |> Solver.solve
+      |> print_result
   end
 
   def print_result(result) do
@@ -50,5 +49,3 @@ defmodule Menu.CLI do
     end
   end
 end
-
-[%Menu.Item{name: "french fries", price: 2.75}, %Menu.Item{name: "french fries", price: 2.75}, %Menu.Item{name: "hot wings", price: 3.55}, %Menu.Item{name: "hot wings", price: 3.55}, %Menu.Item{name: "sampler plate", price: 5.80}]
