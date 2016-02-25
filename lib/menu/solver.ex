@@ -3,12 +3,13 @@ defmodule Menu.Solver do
   alias Menu.Helpers
 
   def solve(target, items) do
-    combinations(items, target) |> Enum.filter(&(total_price_matches? &1, target))
+    combinations(items, target)
+      |> Enum.filter(&(total_price_matches? &1, target))
   end
 
   def combinations(items, target) do
     max = max_possible_items(items, target)
-    Helpers.combinations_up_to(max, items)
+    Helpers.combinations_up_to(max, items) |> Enum.uniq
   end
 
   def max_possible_items(items, target) do
